@@ -96,3 +96,7 @@ h1 {
 .liked {
   color: red;
 }
+
+p {
+  font-size: 30px;
+}

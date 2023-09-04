@@ -34,7 +34,10 @@ function App() {
       <h1>Pokemon Cards</h1>
       <Filter />
       {isLoading ? (
-        <img src={Pokeball} alt="Pokeball loading" />
+        <>
+        <img src={Pokeball} alt="Pokeball" />
+        <p>Loading...</p>
+        </>
       ) : (
         <CardList />
       )}
