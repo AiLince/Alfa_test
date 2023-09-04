@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import CardList from "./components/CardList/CardList";
-import Filter from "./components/Filter/Filter";
-import { useDispatch } from "react-redux";
-import { addCard } from "./store/actions";
-import Pokeball from "./assets/images/pokeball.gif"
+import React, { useEffect, useState } from 'react';
+import CardList from './components/CardList/CardList';
+import Filter from './components/Filter/Filter';
+import { useDispatch } from 'react-redux';
+import { addCard } from './store/actions';
+import Pokeball from './assets/images/pokeball.gif';
 
 function App() {
   const dispatch = useDispatch();
@@ -11,14 +11,14 @@ function App() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("https://api.pokemontcg.io/v1/cards?setCode=base1")
+    fetch('https://api.pokemontcg.io/v1/cards?setCode=base1')
       .then((response) => response.json())
       .then((data) => {
         const cards = data.cards.map((card) => ({
           id: card.id,
           name: card.name,
           imageUrl: card.imageUrl,
-          isLiked: false
+          isLiked: false,
         }));
         cards.forEach((card) => dispatch(addCard(card)));
         setIsLoading(false);
@@ -30,20 +30,22 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="app">
-      <div className="header">
-          <h1>Pokemon Cards</h1>
-          <Filter />
-      </div>
-      {isLoading ? (
-        <>
+    <>
+      <header className="header">
+        <h1>Pokemon Cards</h1>
+        <Filter />
+      </header>
+      <div className="app">
+        {isLoading ? (
+          <>
             <img src={Pokeball} alt="Pokeball" />
             <p>Loading...</p>
-        </>
-      ) : (
-        <CardList />
-      )}
-    </div>
+          </>
+        ) : (
+          <CardList />
+        )}
+      </div>
+    </>
   );
 }
 
