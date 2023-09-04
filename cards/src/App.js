@@ -31,12 +31,14 @@ function App() {
 
   return (
     <div className="app">
-      <h1>Pokemon Cards</h1>
-      <Filter />
+      <div className="header">
+          <h1>Pokemon Cards</h1>
+          <Filter />
+      </div>
       {isLoading ? (
         <>
-        <img src={Pokeball} alt="Pokeball" />
-        <p>Loading...</p>
+            <img src={Pokeball} alt="Pokeball" />
+            <p>Loading...</p>
         </>
       ) : (
         <CardList />
